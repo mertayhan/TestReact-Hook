@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export default class NotFound extends Component {
-    render() {
-        return (
-            <div className="ui row">
-                Not Found!!
-            </div>
-        )
-    }
-}
+const NotFound = () => {
+  return <div className="ui row">Not Found!!</div>;
+};
+
+export default NotFound;

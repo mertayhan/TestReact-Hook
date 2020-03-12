@@ -1,35 +1,28 @@
-import React, { Component } from "react";
+import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import axios from "axios";
+import axios from 'axios';
 
+const UserListHook = () =>{
 
+    const[users,setUsers]= useState([]);
+    const getUsers = async () =>{
+        axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
+           
+            setUsers(res.data);
+          });
+    }   
 
-export default class UserList extends Component {
-  state = {
-    users: [],
-  };
-
-  componentDidMount() {
-    this.getUsers();
-  }
-
-  getUsers = () => {
+    useEffect(()=>{
+       getUsers()
+        
+    },[])
     
-    axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
-      this.setState({ users: res.data });
-    });
-  };
 
- 
+    var nameSplit = name => name.split(" ");
 
-  render() {
-    var nameSplit = name => {
-      name = name.split(" ");
-      return name;
-    };
-  
     return (
-      <div className="ui row">
+        
+            <div className="ui row">
         <h2>Users Table</h2>
         <table className="ui table">
           <thead>
@@ -47,7 +40,7 @@ export default class UserList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.users.map(user => (
+            {users.map(user => (
             <tr key={user.id}>
             <th scope="row">{user.id}</th>
             <td>{nameSplit(user.name)[0]}</td>
@@ -60,7 +53,7 @@ export default class UserList extends Component {
             <td>{user.company.name}</td>
             <td>
               <button className="ui button">
-                <Link to={`/albumlist/${user.id}`}>Get Albums</Link>
+            <Link to={`/albumlist/${user.id}`}>get{user.id}</Link>
               </button>
             </td>
           </tr>
@@ -68,6 +61,8 @@ export default class UserList extends Component {
           </tbody>
         </table>
       </div>
-    );
-  }
+        
+    )
 }
+
+export default UserListHook

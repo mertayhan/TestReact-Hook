@@ -1,15 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter, Route ,Switch} from "react-router-dom";
-import UserList from "./UsersList";
-import AlbumList from "./AlbumsList";
+import UserListHook from './UserListHook';
+import AlbumListHook from "./AlbumListHook";
 import Header from "./Header";
 import NotFound from "./NotFound";
 
 
-export default class App extends Component {
+const App = ()=> {
 
 
-  render() {
+
     return (
       <div className="ui container">
         <BrowserRouter>
@@ -21,17 +21,17 @@ export default class App extends Component {
             <Route
               exact
               path="/userlist"
-              component={UserList}
+              component={UserListHook}
             ></Route>
             <Route
               exact
               path="/albumlist/:id"
-              component={AlbumList}           
+              component={AlbumListHook}           
             ></Route>
              <Route
               exact
               path="/albumlist"
-              component={AlbumList}           
+              component={AlbumListHook}           
             ></Route>
             
              <Route exact component={NotFound}></Route>
@@ -40,5 +40,6 @@ export default class App extends Component {
         </BrowserRouter>
       </div>
     );
-  }
+  
 }
+export default App;
