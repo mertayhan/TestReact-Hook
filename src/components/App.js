@@ -4,6 +4,7 @@ import UserListHook from './UserListHook';
 import AlbumListHook from "./AlbumListHook";
 import Header from "./Header";
 import NotFound from "./NotFound";
+import NewApi from "./NewApi";
 
 
 const App = ()=> {
@@ -17,7 +18,7 @@ const App = ()=> {
 
           <div className="ui grid">
             <Switch>
-            <Route exact path="/"></Route>           
+            <Route exact path="/" component={NewApi}></Route>           
             <Route
               exact
               path="/userlist"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import AlbumListItem from './AlbumListItem';
 import axios from "axios";
+import NewApi from "./NewApi";
 
 const AlbumListHook = () => {
   const [albums, setAlbums] = useState([]);
@@ -49,6 +50,8 @@ const AlbumListHook = () => {
           ))}
         </tbody>
       </table>
+      <NewApi></NewApi>
+
     </div>
   );
 };

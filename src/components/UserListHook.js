@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-
+import NewApi from './NewApi';
 const UserListHook = () =>{
 
     const[users,setUsers]= useState([]);
@@ -59,6 +59,9 @@ const UserListHook = () =>{
           </tr>
             ))}
           </tbody>
+        </table>
+        <table>
+          <NewApi></NewApi>
         </table>
       </div>
         
